@@ -1,0 +1,12 @@
+provider: aws
+
+env:
+- name: AWS_DEFAULT_REGION
+  value: eu-west-2
+
+serviceAccounts:
+  annotations:
+    eks.amazonaws.com/role:
+
+domainFilters:
+- lab.nginxsiad.com

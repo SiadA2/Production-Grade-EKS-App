@@ -1,0 +1,10 @@
+ingressShim:
+  
+
+extraArgs:
+- --dns01-recursive-nameservers="8.8.8.8:53"
+- --dns01-recursive-nameservers-only
+
+serviceAccounts:
+  annotations:
+    eks.amazonaws.com/role:
