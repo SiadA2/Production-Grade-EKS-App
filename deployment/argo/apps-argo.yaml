@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/SiadA2/Production-Grade-EKS-App.git
+    targetRevision: HEAD
+    path: apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
