@@ -1,11 +1,10 @@
 name: Push to Amazon ECR
 
 on:
-  workflow_dispatch: 
-    inputs:
-        docker-push:
-            description: 'Do you want to push? Type "yes" to proceed'
-            type: string
+  push:
+    branches: ['main']
+    paths: 
+      - src/Dockerfile
 
     
 
@@ -20,32 +19,25 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    - name: Configure AWS credentials w/ OIDC
+      uses: aws-actions/configure-aws-credentials@v2
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-      with:
-        mask-password: true
+        role-to-assume: arn:aws:iam::174350032095:role/GitHub-Actions-eks
+        aws-region: us-west-2
 
     - name: Build and tag image 
       id: build-image
       run: |
-        cd app
-        aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 174350032095.dkr.ecr.eu-west-2.amazonaws.com
-        docker build -t siada2/ecs .
-        docker tag siada2/ecs:latest 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        cd src
+        docker build -t siada2/eks . 
+        docker tag siada2/eks:latest 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
+        
     
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.28.0
       with:
-        image-ref: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        image-ref: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
 
     - name: Push to Amazon ECR
       run: |
-        docker push 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        docker push 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
