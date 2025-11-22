@@ -34,7 +34,7 @@ CMD [ "python", "-m", "http.server", "3000" ]
 
 
 
-# FROM python:3.8-slim 
+
 
 # WORKDIR /app
 

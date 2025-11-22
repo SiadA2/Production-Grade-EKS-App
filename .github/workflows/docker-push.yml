@@ -24,6 +24,10 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::174350032095:role/GitHub-Actions-eks
         aws-region: us-west-2
+    
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build and tag image 
       id: build-image
