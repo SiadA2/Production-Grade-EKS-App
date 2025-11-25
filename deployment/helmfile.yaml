@@ -3,7 +3,7 @@ helmDefaults:
   wait: true
   atomic: true
   timeout: 300
-
+  
 repositories:
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
@@ -28,8 +28,7 @@ releases:
     version: "1.18.2"
     values:
       - helm-values/cert-manager.yaml
-    needs: 
-      - ingress-nginx/ingress-nginx
+ 
 
   - name: external-dns
     namespace: external-dns
@@ -37,8 +36,7 @@ releases:
     version: "1.19.0"
     values:
       - helm-values/external-dns.yaml
-    needs: 
-      - ingress-nginx/ingress-nginx
+   
       
   - name: argocd
     namespace: argocd
@@ -46,9 +44,4 @@ releases:
     version: "9.0.5" 
     values:
       - helm-values/argo-cd.yaml
-    needs: 
-      - ingress-nginx/ingress-nginx
-      - external-dns/external-dns
-      - cert-manager/cert-manager
-
- 
+   
