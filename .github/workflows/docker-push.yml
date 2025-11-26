@@ -6,7 +6,9 @@ on:
     paths: 
       - src/Dockerfile
 
-    
+permissions: 
+  id-token: write
+  contents: read    
 
 env:
   AWS_REGION: eu-west-2                       
@@ -14,9 +16,6 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-24.04
-    permissions: 
-      id-token: write
-      # contents: read
 
     steps:
     - name: Checkout
