@@ -36,22 +36,4 @@ CMD [ "python", "-m", "http.server", "3000" ]
 
 
 
-# WORKDIR /app
 
-# COPY . .
-
-# RUN apt-get update && apt-get install -y \
-#     gcc \
-#     python3-dev \
-#     libmariadb-dev \
-#     pkg-config
-
-# RUN addgroup --system group && adduser --system user
-
-# RUN chown -R user:group /app
-
-# USER user
-
-# EXPOSE 3000
-
-# CMD [ "python", "-m", "http.server", "3000" ]
