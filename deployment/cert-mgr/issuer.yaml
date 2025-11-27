@@ -4,14 +4,15 @@ metadata:
   name: issuer
 spec:
   acme:
-    server: "https://acme-v02.api.letsencrypt.otg/directory"
+    # server: "https://acme-v02.api.letsencrypt.org/directory"
+    server: "https://acme-staging-v02.api.letsencrypt.org/directory"
     email: "siadadam2@gmail.com"
     privateKeySecretRef:
       name: issuer
     solvers:
     - dns01:
         route53:
-          hostedZoneID:
+          hostedZoneID: Z02432831FEC57GRQFGHB
           region: eu-west-2
       selector:
         dnsZones:

@@ -1,3 +1,6 @@
+global:
+  domain: argocd.lab.nginxsiad.com
+  
 server:
   extraArgs:
     - --insecure
@@ -12,6 +15,6 @@ server:
     hosts:
     - argocd.lab.nginxsiad.com
     tls:
-    - secretName: argocd-ingress-tls
+    - secretName: argocd-server-tls
       hosts:
       - argocd.lab.nginxsiad.com

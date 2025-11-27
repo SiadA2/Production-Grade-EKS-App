@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: game
+  labels:
+    app: game
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: game
+  template:
+    metadata:
+    labels:
+      app: game
+    spec: 
+      containers:
+      - name: game
+        image: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        ports:
+        - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: game
+spec:
+  selector:
+    app: game
+  type: ClusterIP
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 3000
+  - name: app-port
+    protocol: TCP
+    port: 8086
+    targetPort: 3000
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-ingress
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: issuer
+    external-dns.alpha.kubernetes.io/hostname: 2048.lab.nginxsiad.com
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - 2048.lab.nginxsiad.com
+    secretName: argocd-tls
+  rules:
+  - host: 2048.lab.nginxsiad.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server-tls
+            port:
+              number: 443
