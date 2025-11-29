@@ -24,7 +24,7 @@ jobs:
     - name: Configure AWS credentials w/ OIDC
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        role-to-assume: arn:aws:iam::174350032095:role/oidc-eks
+        role-to-assume: arn:aws:iam::338235305910:role/oidc-eks
         aws-region: eu-west-2
     
     - name: Login to Amazon ECR
@@ -35,15 +35,15 @@ jobs:
       id: build-image
       run: |
         cd src
-        docker build -t siada2/eks . 
-        docker tag siada2/eks:latest 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
+        docker build -t siada/eks .
+        docker tag siada/eks:latest 338235305910.dkr.ecr.eu-west-2.amazonaws.com/siada/eks:latest
         
     
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.28.0
       with:
-        image-ref: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
+        image-ref: 338235305910.dkr.ecr.eu-west-2.amazonaws.com/siada/eks:latest
 
     - name: Push to Amazon ECR
       run: |
-        docker push 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
+        docker push 338235305910.dkr.ecr.eu-west-2.amazonaws.com/siada/eks:latest
