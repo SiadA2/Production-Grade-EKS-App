@@ -18,7 +18,7 @@ spec:
     spec: 
       containers:
       - name: game
-        image: wordpress:latest
+        image: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/eks:latest
         ports:
         - containerPort: 3000
 
