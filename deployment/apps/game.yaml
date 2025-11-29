@@ -16,7 +16,7 @@ spec:
     spec: 
       containers:
       - name: game
-        image: 174350032095.dkr.ecr.eu-west-2.amazonaws.com/siada2/ecs:latest
+        image: nginx:latest
         ports:
         - containerPort: 3000
 
