@@ -18,7 +18,7 @@ spec:
     spec: 
       containers:
       - name: game
-        image: nginx:latest
+        image: wordpress:latest
         ports:
         - containerPort: 3000
 
