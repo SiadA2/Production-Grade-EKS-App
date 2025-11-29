@@ -1,3 +1,5 @@
+# Deployment 
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,8 +13,8 @@ spec:
       app: game
   template:
     metadata:
-    labels:
-      app: game
+      labels:
+        app: game
     spec: 
       containers:
       - name: game
@@ -21,6 +23,8 @@ spec:
         - containerPort: 3000
 
 ---
+
+# Cluster IP Service
 
 apiVersion: v1
 kind: Service
@@ -41,6 +45,8 @@ spec:
     targetPort: 3000
 
 ---
+
+# Ingress 
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
