@@ -64,10 +64,9 @@ spec:
         pathType: Prefix
         backend: 
           service:
-            name: the-app-hub
+            name: game
             port: 
-              number: 443
-  tls: 
+              number: 80
   - hosts:
     - 2048.lab.nginxsiad.com
     secretName: game-tls
