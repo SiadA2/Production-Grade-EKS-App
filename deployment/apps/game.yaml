@@ -56,6 +56,10 @@ metadata:
     cert-manager.io/cluster-issuer: "issuer"
 spec: 
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - 2048.lab.nginxsiad.com
+    secretName: game-tls
   rules:
   - host: 2048.lab.nginxsiad.com
     http:
