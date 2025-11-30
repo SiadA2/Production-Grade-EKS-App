@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/SiadA2/Production-Grade-EKS-App.git
     targetRevision: HEAD
-    path: apps/game.yaml
+    path: deployment/apps
   destination:
     server: https://kubernetes.default.svc
     namespace: default

@@ -6,7 +6,7 @@ module "cert_manager_pod_identity" {
   name = "cert-manager"
 
   attach_cert_manager_policy    = true
-  cert_manager_hosted_zone_arns = ["arn:aws:route53:::hostedzone/Z02432831FEC57GRQFGHB"]
+  cert_manager_hosted_zone_arns = ["arn:aws:route53:::hostedzone/Z044890219SMZIU4OBDLM"]
 
   tags = local.tags
 }
@@ -26,7 +26,7 @@ module "external_dns_pod_identity" {
   name = "external-dns"
 
   attach_external_dns_policy    = true
-  external_dns_hosted_zone_arns = ["arn:aws:route53:::hostedzone/Z02432831FEC57GRQFGHB"]
+  external_dns_hosted_zone_arns = ["arn:aws:route53:::hostedzone/Z044890219SMZIU4OBDLM"]
 
   tags = local.tags
 }
