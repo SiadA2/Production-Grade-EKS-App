@@ -34,8 +34,8 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 │   ├── pod-identities.tf
 │   ├── provider.tf
 │   └── vpc.tf
-├── images
-└── src
+├── src/
+│   └── Dockerfile
 
 ```
 
