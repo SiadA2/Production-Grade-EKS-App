@@ -35,7 +35,7 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 │   ├── provider.tf
 │   └── vpc.tf
 ├── src/
-│   └── Dockerfile
+    └── Dockerfile
 
 ```
 
