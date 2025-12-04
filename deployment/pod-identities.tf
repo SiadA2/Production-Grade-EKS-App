@@ -38,3 +38,20 @@ resource "aws_eks_pod_identity_association" "external-dns" {
   role_arn        = module.external_dns_pod_identity.iam_role_arn
 }
 
+module "aws_ebs_csi_pod_identity" {
+  source = "terraform-aws-modules/eks-pod-identity/aws"
+
+  name = "aws-ebs-csi"
+
+  attach_aws_ebs_csi_policy = true
+
+  associations = {
+    this = {
+      cluster_name    = "eks-2048"
+      namespace       = "kube-system"
+      service_account = "ebs-csi-controller-sa"
+    }
+  }
+
+  tags = local.tags
+}

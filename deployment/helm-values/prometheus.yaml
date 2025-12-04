@@ -1,0 +1,53 @@
+server:
+  name: server
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+      # nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: issuer
+    hostname: prometheus.lab.nginxsiad.com 
+    hosts:
+      - prometheus.lab.nginxsiad.com
+    tls:
+      - hosts:
+          - prometheus.lab.nginxsiad.com
+        secretName: prometheus-server-tls
+
+  
+  persistentVolume:
+    enabled: true
+    statefulSetNameOverride: ""
+    accessModes:
+      - ReadWriteOnce
+    existingClaim: ""
+    mountPath: /data
+    size: 8Gi
+    storageClass: "gp2"
+
+
+alertmanager:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClass: "gp2"
+    accessModes:
+      - ReadWriteOnce
+    size: 2Gi
+  # podSecurityContext:
+  #   runAsUser: 65534
+  #   runAsNonRoot: true
+  #   runAsGroup: 65534
+  #   fsGroup: 65534
+
+
+
+
+
+
+
+
+
+
+
