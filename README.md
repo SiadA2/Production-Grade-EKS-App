@@ -1,6 +1,8 @@
 # Production-Grade-EKS-Cluster
 
-![Demo]("./images/Screen Recording 2025-12-04 081004.gif")
+<div align="center">
+    <img src="./images/Screen Recording 2025-12-04 081004.mp4" alt="Diagram" width="600"/>
+</div>
 
 ## Overview
 
