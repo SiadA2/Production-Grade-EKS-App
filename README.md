@@ -6,13 +6,18 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 
 ## Archetecture
 
+<div align="center">
+    <img src="./images/Screenshot 2025-12-06 085911.png" alt="Diagram" width="600"/>
+</div>
+
+
 ## Key features
 
-- Real-time DNS updates through external-dns
-- DNS validation and certificates provided through cert-manager
-- CI/CD implemented through GitHub Actions(CI) and ArgoCD(CD)
-- Open ID Connect(OIDC) configured into GitHub Actions pipelines, reducing the risk of long-lived credentials 
-- Observability provided through Prometheus and Grafana
+- **External-dns:** Automatically updates DNS records in Route 53.
+- **Cert-manager:** Provides DNS validation and digital certificates, as well as certificate management.
+- **Helm:** Orchestrates K8s deployments 
+- **Prometheus/Grafana:** Fetches vital cluster logs/metrics and visualises them in readable dashboards.
+- **Open ID Connect (OIDC):** Use of JSON web tokens over access keys lifts the risks & responsilities of key management and also enforces just-in-time permissions.  
 
 ## Directory Structure
 
@@ -20,12 +25,12 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 
 ├── README.md
 ├── deployment/
-│   ├── apps/
-│   │   └── game.yaml
-│   ├── argo/
-│   │   └── apps-argo.yaml
-│   ├── cert-mgr/
-│   │   └── issuer.yaml
+│   ├── apps
+│   │   └── /
+│   ├── argo
+│   │   └── /
+│   ├── cert-mgr
+│   │   └── /
 │   ├── helm-values
 │   │   └── /
 │   ├── helmfile.yaml
@@ -39,4 +44,47 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 
 ```
 
+## Docker
+
+<div align="center">
+    <img src="./images/Screenshot 2025-11-22 170226.png" alt="Diagram" width="600"/>
+</div>
+
+- **Multistage builds:** Seperates the application build from the final image, cutting image sizes by **90%**
+- **Image tagging:** Clear, readable tags allow us to easily and reliably rollback to known, stable versions
+- **Dockerignore:**
+
+
 ## GitOps Workflow 
+
+<div align="center">
+    <img src="./images/Screenshot 2025-12-06 092242.png" alt="Diagram" width="600"/>
+</div>
+
+## ArgoCD
+
+<div align="center">
+    <img src="./images/Screenshot 2025-12-01 101134.png" alt="Diagram" width="600"/>
+</div>
+
+## Observability
+
+### Prometheus: 
+
+<div align="center">
+    <img src="./images/Screenshot 2025-12-05 214311.png" alt="Diagram" width="600"/>
+</div>
+
+### Grafana: 
+
+<div align="center">
+    <img src="./images/Screenshot 2025-12-05 213920.png" alt="Diagram" width="600"/>
+</div>
+
+## Run Locally:
+
+Copy the contents of ```src/``` into your local machine. Then run:
+
+```bash 
+python -m http.server 3000
+```
