@@ -1,9 +1,10 @@
 # Production-Grade-EKS-Cluster
 
-<video width="600" controls>
-  <source src="images/Screen Recording 2025-12-04 081004.mp4" type="video/mp4">
-</video>
-
+<div align="center">
+    <video width="600" controls>
+        <source src="images/Screen Recording 2025-12-04 081004.mp4" type="video/mp4">
+    </video>
+</div>
 ## Overview
 
 This project is is a scalable, production-grade deployment of the 2048 app, on an EKS cluster. The deployment is spread across three AZs, for high-availability and uses the EKS Managed Node Group service, allowing for streamlined scalability. Infrastructure deployments are automated using Terraform, and the application is containerised using Docker and deployed to a private container registry on AWS.
