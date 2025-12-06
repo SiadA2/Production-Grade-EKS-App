@@ -1,19 +1,17 @@
 server:
   name: server
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    annotations:
-      # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-      # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      cert-manager.io/cluster-issuer: issuer
-    hostname: prometheus.lab.nginxsiad.com 
-    hosts:
-      - prometheus.lab.nginxsiad.com
-    tls:
-      - hosts:
-          - prometheus.lab.nginxsiad.com
-        secretName: prometheus-server-tls
+  # ingress:
+  #   enabled: true
+  #   ingressClassName: nginx
+  #   annotations:
+  #     cert-manager.io/cluster-issuer: issuer
+  #   hostname: prometheus.lab.nginxsiad.com 
+  #   hosts:
+  #     - prometheus.lab.nginxsiad.com
+  #   tls:
+  #     - hosts:
+  #         - prometheus.lab.nginxsiad.com
+  #       secretName: prometheus-server-tls
 
   
   persistentVolume:
