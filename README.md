@@ -1,4 +1,4 @@
-# Production-Grade app hosted on Amazon EKS
+# Production-grade K8s deployment
 
 <div align="center">
     <img src="./images/Screenshot 2025-12-06 113837.png" alt="Diagram" width="600"/>
