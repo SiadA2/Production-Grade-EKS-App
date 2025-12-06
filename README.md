@@ -1,6 +1,6 @@
 # Production-Grade-EKS-Cluster
 
-![Demo](Screen Recording 2025-12-04 081004.gif)
+![Demo]("./images/Screen Recording 2025-12-04 081004.gif")
 
 ## Overview
 
