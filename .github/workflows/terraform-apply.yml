@@ -6,6 +6,10 @@ on:
     paths: 
       - deployment/
 
+permissions: 
+  id-token: write
+  contents: read  
+
 env:
   AWS_REGION: eu-west-2
 
@@ -23,7 +27,7 @@ jobs:
           uses: aws-actions/configure-aws-credentials@v2
           with:
             role-to-assume: arn:aws:iam::174350032095:role/eks-admin
-            aws-region: eu-west-2
+            aws-region: ${{ env.AWS_REGION }}
 
         - name: Terraform apply
           uses: dflook/terraform-apply@v2
