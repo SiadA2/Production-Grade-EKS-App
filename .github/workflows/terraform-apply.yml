@@ -3,8 +3,8 @@ name: Terraform apply
 on:
   push:
     branches: ['main']
-    # paths: 
-    #   - deployment/
+    paths: 
+      - deployment/*
 
 permissions: 
   id-token: write
