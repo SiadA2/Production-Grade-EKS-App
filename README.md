@@ -57,7 +57,15 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 
 - **Multistage builds:** Seperates the application build from the final image, cutting image sizes by **90%**
 - **Image tagging:** Clear, readable tags allow us to easily and reliably rollback to known, stable versions
-- **Dockerignore:**
+- **Dockerignore:** Anything in this file is ignored when running the ```COPY``` command in our dockerfile, ensuring no large, unecessary files are copied into our container, reducing image size.
+- **Non-root user:** Containers by default run as root users, so to prevent malicious access, we lock it away entirely by creating and running the container as a non-root user. 
+
+## Terraform
+
+- **Community modules:** Implementation of DRY, using ready-made, reusable terraform modules
+- **Checkov:** Security scanning in CI pipelines enforce security best-practices in terraform configurations, hardening infrastructure.
+- **Pre-commit-hooks:** Error-checking tools such as ```terraform_validate``` & ```terraform_fmt``` ensure correct syntax and fix human errors such as typos before the become problems later on in our workflow 
+
 
 
 ## GitOps Workflow 
@@ -65,6 +73,10 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 <div align="center">
     <img src="./images/Screenshot 2025-12-06 092242.png" alt="Diagram" width="600"/>
 </div>
+
+- **CI Pipelines:** Path & branch-based triggers ensure pipelines only run when code changes are commited and pushed to the main branch, preventing any unintentional workflow runs. OIDC also solves the risks associated with long-lived access keys.
+
+- **ArgoCD:** Argo server monitors the repository for any changes to the application and automatically deploys them, syncing the cluster with the desired state. 
 
 ## ArgoCD
 
@@ -85,6 +97,8 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 <div align="center">
     <img src="./images/Screenshot 2025-12-05 213920.png" alt="Diagram" width="600"/>
 </div>
+
+## Security considerations
 
 ## Run Locally:
 
