@@ -100,6 +100,8 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
     <img src="./images/Screenshot 2025-12-05 213920.png" alt="Diagram" width="600"/>
 </div>
 
+- **Prometheus:** Node exporter sits inside each K8s node and grabs all internal metrics, such as CPU usage, memory and available storage space.
+- **Grafana:** Grabs the data fetched by prometheus and makes it more readable through dashboards and visualisations. Prometheus' URL needs to be configured as a data source for Grafana to see it.
 
 ## Run Locally:
 
@@ -108,3 +110,7 @@ Copy the contents of ```src/``` into your local machine. Then run:
 ```bash 
 python -m http.server 3000
 ```
+
+## What I learnt:
+
+- **PVs & PVCs:** Services such as Prometheus node-exporter and alertmanager require persistent storage to store logs, metrics and alerts. When deployed through K8s, this is provided through a **persistent volume**. To access this, pods need to make a **persistent volume claim**. Without either, neither service can run, causing the release to fail.
