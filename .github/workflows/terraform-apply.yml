@@ -31,11 +31,11 @@ jobs:
 
         - name: Run checkov scan
           uses: bridgecrewio/checkov-action@v12
-          
+
         - name: Terraform apply
           uses: dflook/terraform-apply@v2
           with:
-            path: deployment
+            path: deployment/terraform
             auto_approve: true
 
 

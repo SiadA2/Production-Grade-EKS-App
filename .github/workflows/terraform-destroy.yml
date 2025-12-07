@@ -31,4 +31,4 @@ jobs:
     - name: terraform destroy
       uses: dflook/terraform-destroy@v2
       with:
-        path: deployment
+        path: deployment/terraform
