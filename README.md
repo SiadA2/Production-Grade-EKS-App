@@ -98,7 +98,8 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
     <img src="./images/Screenshot 2025-12-05 213920.png" alt="Diagram" width="600"/>
 </div>
 
-## Security considerations
+## Potential Improvements
+
 
 ## Run Locally:
 
