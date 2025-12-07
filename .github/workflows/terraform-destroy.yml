@@ -1,0 +1,34 @@
+name: Terraform Destroy
+on: 
+    workflow_dispatch: 
+        inputs: 
+            terraform-destroy: 
+                description: This will delete all infrastructure
+                required: true
+
+permissions: 
+  id-token: write
+  contents: read 
+
+env:
+  AWS_REGION: eu-west-2  
+
+jobs:   
+  destroy:
+    runs-on: ubuntu-24.04
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4    
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ secrets.ADMIN_ARN }}
+        aws-region: ${{ env.AWS_REGION }}
+    
+    - name: terraform destroy
+      uses: dflook/terraform-destroy@v2
+      with:
+        path: deployment
