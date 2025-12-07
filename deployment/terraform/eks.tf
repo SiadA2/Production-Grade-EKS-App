@@ -16,7 +16,7 @@ module "eks" {
       resolve_conflicts_on_create = "OVERWRITE"
     }
     aws-ebs-csi-driver = {
-      resolve_conflicts="OVERWRITE"
+      resolve_conflicts = "OVERWRITE"
     }
   }
 

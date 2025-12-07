@@ -15,7 +15,7 @@ resource "aws_eks_pod_identity_association" "cert-manager" {
   cluster_name    = module.eks.cluster_name
   namespace       = "cert-manager"
   service_account = "cert-manager"
-  role_arn        = module.cert_manager_pod_identity.iam_role_arn 
+  role_arn        = module.cert_manager_pod_identity.iam_role_arn
 }
 
 # ExternalDNS Pod Identity
@@ -57,4 +57,3 @@ module "aws_ebs_csi_pod_identity" {
   tags = local.tags
 }
 
-#
