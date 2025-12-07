@@ -1,4 +1,4 @@
-# Production-grade K8s deployment
+<h1 align="center">Production-grade K8s deployment</h1>
 
 <div align="center">
     <img src="./images/Screenshot 2025-12-06 113837.png" alt="Diagram" width="600"/>
@@ -59,6 +59,7 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 - **Image tagging:** Clear, readable tags allow us to easily and reliably rollback to known, stable versions
 - **Dockerignore:** Anything in this file is ignored when running the ```COPY``` command in our dockerfile, ensuring no large, unecessary files are copied into our container, reducing image size.
 - **Non-root user:** Containers by default run as root users, so to prevent malicious access, we lock it away entirely by creating and running the container as a non-root user. 
+- **Trivy scans:** Scan images for any CVEs before they're pushed to the next stage of the pipeline
 
 ## Terraform
 
@@ -75,6 +76,8 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 </div>
 
 - **CI Pipelines:** Path & branch-based triggers ensure pipelines only run when code changes are commited and pushed to the main branch, preventing any unintentional workflow runs. OIDC also solves the risks associated with long-lived access keys.
+
+- **GitHub Secrets:** Sensitive data such as image tags and IAM role arns are stored as secrets rather than hardcoded as plaintext.
 
 - **ArgoCD:** Argo server monitors the repository for any changes to the application and automatically deploys them, syncing the cluster with the desired state. 
 
