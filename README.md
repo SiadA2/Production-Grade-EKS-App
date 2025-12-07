@@ -28,8 +28,11 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 
 ```bash 
 
-├── README.md
-├── deployment/
+├── .github
+│   └── workflows
+│       └── /
+├── deployment
+│   ├── helmfile.yaml
 │   ├── apps
 │   │   └── /
 │   ├── argo
@@ -38,13 +41,9 @@ This project is is a scalable, production-grade deployment of the 2048 app, on a
 │   │   └── /
 │   ├── helm-values
 │   │   └── /
-│   ├── helmfile.yaml
-│   ├── eks.tf
-│   ├── locals.tf
-│   ├── pod-identities.tf
-│   ├── provider.tf
-│   └── vpc.tf
-└── src/
+│   └── terraform
+│       └── /
+└── src
     └── Dockerfile
 
 ```
