@@ -26,7 +26,7 @@ jobs:
         - name: Configure AWS credentials w/ OIDC
           uses: aws-actions/configure-aws-credentials@v2
           with:
-            role-to-assume: arn:aws:iam::174350032095:role/eks-admin
+            role-to-assume: ${{ secrets.ADMIN_ARN }}
             aws-region: ${{ env.AWS_REGION }}
 
         - name: Terraform apply
